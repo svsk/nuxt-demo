@@ -1,5 +1,3 @@
-import { WishContext } from '~~/lib/WishContext';
-
 export default defineEventHandler((_) => {
-    return WishContext.getEntries();
+    // Add code to get all wish entries from db.
 });

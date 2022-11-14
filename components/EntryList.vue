@@ -2,26 +2,12 @@
 import { Wish } from '@prisma/client';
 import { ref } from 'vue';
 
-const { data: entries, refresh: refreshEntries } = useFetch('/api/entries/getall');
+const entries = new Array<Wish>();
 
 const newEntry = ref<Wish | null>(null);
-const handleAddClicked = async () => {
-    const nextOrderValue = Math.max(...(entries.value?.map((e) => e.Order) || [0])) + 1;
+const handleAddClicked = async () => { };
 
-    newEntry.value = {
-        Id: crypto.randomUUID(),
-        Name: '',
-        Description: '',
-        Price: 0,
-        Order: nextOrderValue,
-    } as Wish;
-};
-
-const handleSaveNewEntry = async () => {
-    await useFetch('/api/entries/add', { method: 'POST', body: newEntry.value });
-    newEntry.value = null;
-    refreshEntries();
-};
+const handleSaveNewEntry = async () => { };
 </script>
 
 <template>
@@ -35,12 +21,7 @@ const handleSaveNewEntry = async () => {
         </div>
 
         <EntryListItem class="py-2 border-b border-gray-500" v-for="entry in entries" :entry="entry" :key="entry.Id" />
-        <EntryListItem
-            @save="handleSaveNewEntry"
-            class="py-2 border-b border-gray-500"
-            v-if="newEntry !== null"
-            :entry="newEntry"
-            editable
-        />
+        <EntryListItem @save="handleSaveNewEntry" class="py-2 border-b border-gray-500" v-if="newEntry !== null"
+            :entry="newEntry" editable />
     </div>
 </template>
