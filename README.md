@@ -40,3 +40,12 @@ npm run preview
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+
+## Interesting Stuff
+
+- Pages (Routing)
+- Server API Directory
+- Fetching data from DB
+- Hydration
+- Inserting data in DB and refreshing state
+- What runs where?
